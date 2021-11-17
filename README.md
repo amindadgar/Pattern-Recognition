@@ -1,7 +1,7 @@
 # pattern-recognition-homework
 This codes belong to my pattern recognition Homeworks.
 
-## HW1 Codes descreption:
+## HW1 Codes description:
 - **Question no2:**<br>
   Generate 100000, n dimension uniform i.i.d. random variables and calculate the volume of the n dimension shape of it.
   *Answer:* 50, 100, 200 and 1000 dimension iid uniform random variables was created. The graphs were plotted. 
