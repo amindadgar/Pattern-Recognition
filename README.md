@@ -18,7 +18,7 @@ This codes belong to my pattern recognition Homeworks.
    *TODO:* write Covariance matrix.
 
 - **Question no5:** <br>
-   (a) Using the two i.i.d ```X1```,```X2``` random variables with distribution of uniform(0,1), Given ```Y=X1+X2``` Calculate P(Y) and P(X1|Y) and also plot the density functions of thoes. <br>
+   (a) Using the two i.i.d ```X1```,```X2``` random variables with distribution of uniform(0,1) with feature sizes of 2, Given ```Y=X1+X2``` Calculate ```P(Y)``` and ```P(X1|Y)``` and also plot the density functions of thoes. <br>
    (b) Re-calculate part a, using ```X1```,```X2``` with the distribution Normal(0,1).
  
  # Notes:
