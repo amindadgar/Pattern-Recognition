@@ -9,26 +9,35 @@ import datetime
 def reform_data(data, test_data ,THRESHOLD):
     """
     Reform an array of floats between one and zero with the threshold value into integers as 0 and 1
-    Inputs:
-    THRESHOLD is the value to set the data whether into 0 or 1 
-    data is the float array
+    
+    INPUTS:
+    -----------
+    THRESHOLD:  is the value to set the data into False or True
+    data:  is the float array
+    
+    OUTPUT:
+    -----------
+    test_labels:  the array showing that the data tends to which class 
     """
     test_labels = np.array(data) >= 0.5
-    test_labels = [1 if label else 0 for label in test_labels]
-    classify = (test_labels == test_data.label).values
     
-    return classify
+    return test_labels
 
 ############################# PERFORM KNN ALGORITHM  #############################
 def KNN(K, train_data, test_data, features, threshold = 0.5):
     """
     The K nearest neighbor algorithm
     
-    Inputs:
-    K is the KNN algorithm parameter (a positive integer value)
-    train_data and test_data in the format of pandas dataframe, the algorithm's food!
-    features are the feature for each data
-    threshold is the value to decide the result of KNN algorithm
+    INPUTS:
+    -----------
+    K:  is the KNN algorithm parameter (a positive integer value)
+    train_data, test_data:  in the format of pandas dataframe, the algorithm's food!
+    features:  are the feature for each data
+    threshold:  is the value to decide the result of KNN algorithm
+    
+    OUTPUT:
+    -----------
+    classified_data:  showing the classifier results
     """
         
     ## get the algorithm start time
@@ -68,6 +77,11 @@ def KNN(K, train_data, test_data, features, threshold = 0.5):
 def read_dataset():
     """
     read the datasets in csv format and prepare them for KNN algorithm
+    
+    OUTPUTS:
+    -----------
+    train_ds_array:  the array of multiple train datasets
+    test_ds_array:  the array of multiple test datasets
     """
     ## save the datasets into an array
     train_ds_array = []
@@ -83,10 +97,38 @@ def read_dataset():
     
     return train_ds_array, test_ds_array
 
+
+############################# check labels of the classified data #############################
+def check_label(actual_labels, target_labels):
+    """
+    check the labels of the classifier output with actual data
+    
+    INPUTS:
+    -----------
+    actual_labels:  are the labels that the classifier gave us
+    target_labels:  are the correct labels of the data
+    
+    OUTPUT:
+    -----------
+    equal_labels:  showing which data the classifier, classified correct and wrong
+    """
+    
+    ## convert to numpy arrays to compute the equality of each elemnts
+    a_labels = np.array(actual_labels)
+    t_labels = np.array(target_labels)
+    
+    ## mark as True the eqaul labels
+    equal_labels = (a_labels == t_labels)
+    
+    return equal_labels
+    
+
 @profile
 def preform_knn():
     """
     perform KNN algorithm for each dataset with different K values
+    
+    And at the end writing the results in a file
     """
     
     ## We have multiple datasets with diffrent names as Atrain.csv, Btrain.csv and etc 
@@ -97,7 +139,7 @@ def preform_knn():
     
     ## dictionary history to save all
     mdate = str(datetime.datetime.now())
-    history = {'date': mdate}
+    history = {'knn.py script run date': mdate}
     
     for i in range(0, len(train_ds_array)):
         ## save the result of different K values
@@ -108,18 +150,22 @@ def preform_knn():
         
         for K in [1, 2, 5, 10, 15, 20, 50, 100, 500, 1000]:
             label = KNN(K, train_ds_array[i], test_ds_array[i], features)
-            labels_classified[str(K)] = {('data %i classified as' % i): str(l) for i,l in enumerate(label)}
+            labels_classified[str(K)] = {('index_%i_classified' % i): int(l) for i,l in enumerate(label)}
+            
+            ## check correct classification results
+            result = check_label(label, test_ds_array[i].label)
             
             ## print the results of algorithm
-            print('K=%s ' % K, 'True classified %s' % label.sum(), '\taccuracy: %f' % (label.sum()*100 / len(label)))        
+            print('K=%s ' % K, 'correctly classified count: %s' % result.sum(), '\taccuracy: %f' % (result.sum()*100 / len(result)))        
                   
         ## save each dataset histories
-        history[dataset_prefixes[i]] = labels_classified    
+        history['dataset %c' % dataset_prefixes[i]] = labels_classified    
         print('\n\n')
         
     ## save the results in a file
     with open('KNN-Result.json','w') as file:
         json.dump(history, file, indent = 4)
+    file.close()
         
 if __name__ == '__main__':
     preform_knn()
