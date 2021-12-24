@@ -56,9 +56,14 @@ def attach_classes(data_frames, labels):
     """
     Consider each dataframe a class of our data
     attach the dataframes into one and add the class lebels
-    Inputs:
+    INPUTS:
+    -----------
     data_frames is an array of data_frames
     lebels is the labels to the classes
+
+    OUTPUTS:
+    -----------
+    df: the dataframe that contains all classes data
     """
     
     data_frame_count = len(data_frames)
@@ -79,8 +84,14 @@ def attach_classes(data_frames, labels):
 def convert_to_pd_dataframe(matrix_data):
     """
     convert a dataset in the form of matrix into pandas dataframe
-    Inputs:
-    matrix_data with two feature space
+    
+    INPUTS:
+    -----------
+    matrix_data:  with two feature space
+
+    OUTPUTS:
+    -----------
+    df:  the matrix that is converted to a dataframe
     """
     df = pd.DataFrame(matrix_data, columns=['feature_one', 'feature_two']) 
     
@@ -90,12 +101,18 @@ def convert_to_pd_dataframe(matrix_data):
 def convert_rowData_df(row_Datas, labels):
     """
     convert raw data into dataframes
-    Input:
-    row_Datas must be an array with the raw datas,
+    
+    INPUTS:
+    ------------
+    row_Datas:  must be an array with the raw datas,
     if we had one raw data then it must be as [raw_data]
     each raw_data is for one class
     
-    lebels is the labels to the data classes
+    lebels:  is the labels to the data classes
+
+    OUTPUTS:
+    ------------
+    df:  A pandas dataframe 
     """
     ## create an array containing the dataframes 
     df_class_arrays = []
@@ -121,15 +138,15 @@ def main():
     """
     ## read txt datasets 
     for char in ['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']:
-        train_raw_ds = read_dataset('toy dataset/%ctrain' % char)
+        train_raw_ds = read_dataset('../toy dataset/%ctrain' % char)
         train_class1 = np.matrix(train_raw_ds[:2])
         train_class2 = np.matrix(train_raw_ds[2:])
         
         df_train = convert_rowData_df([train_class1.T, train_class2.T], [0, 1])
         
-        df_train.to_csv('processed_dataset/%ctrain.csv' % char, index=False, mode='w')
+        df_train.to_csv('../processed_dataset/%ctrain.csv' % char, index=False, mode='w')
         
-        test_raw_ds = read_dataset('toy dataset/%ctest' % char)
+        test_raw_ds = read_dataset('../toy dataset/%ctest' % char)
         ## get classes and convert to matrix representation
         test_raw_class1 = np.array(test_raw_ds).T[1000:]
         test_raw_class2 = np.array(test_raw_ds).T[:1000]
@@ -138,7 +155,7 @@ def main():
         test_raw_class2 = np.matrix(test_raw_class2)
 
         df_test = convert_rowData_df([test_raw_class1, test_raw_class2], [0, 1])
-        df_test.to_csv('processed_dataset/%ctest.csv' % char,index=False)
+        df_test.to_csv('../processed_dataset/%ctest.csv' % char,index=False)
         
 
         

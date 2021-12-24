@@ -74,10 +74,14 @@ def KNN(K, train_data, test_data, features, threshold = 0.5):
     return classified_data
 
 ############################# READ DATASET #############################
-def read_dataset():
+def read_dataset(datasets_directory):
     """
     read the datasets in csv format and prepare them for KNN algorithm
     
+    INPUTS:
+    -----------
+    datasets_directory:  the parent directory for our datasets 
+
     OUTPUTS:
     -----------
     train_ds_array:  the array of multiple train datasets
@@ -89,8 +93,14 @@ def read_dataset():
     
     ## read them and append it to arrays
     for char in ['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']:
-        df_train = pd.read_csv('processed_dataset/%ctrain.csv' % char)
-        df_test = pd.read_csv('processed_dataset/%ctest.csv' % char)
+        # df_train = pd.read_csv('processed_dataset/%ctrain.csv' % char)
+        # df_test = pd.read_csv('processed_dataset/%ctest.csv' % char)
+
+        train_dir = '%s%ctrain.csv' % (datasets_directory, char)
+        test_dir = '%s%ctest.csv' % (datasets_directory, char)
+        df_train = pd.read_csv(train_dir)
+        df_test = pd.read_csv(test_dir)
+ 
         
         train_ds_array.append(df_train)
         test_ds_array.append(df_test)
@@ -135,7 +145,7 @@ def preform_knn():
     dataset_prefixes = ['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
     
     ## read all datasets
-    train_ds_array, test_ds_array = read_dataset()
+    train_ds_array, test_ds_array = read_dataset('../processed_dataset/')
     
     ## dictionary history to save all
     mdate = str(datetime.datetime.now())
@@ -163,7 +173,7 @@ def preform_knn():
         print('\n\n')
         
     ## save the results in a file
-    with open('KNN-Result.json','w') as file:
+    with open('../KNN-Result.json','w') as file:
         json.dump(history, file, indent = 4)
     file.close()
         
