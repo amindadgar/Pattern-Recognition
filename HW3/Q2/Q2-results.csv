@@ -1,0 +1,13 @@
+,isotropic,dataset,TP,TN,FP,FN,accuracy
+0,False,Atrain.csv,975,815,185,25,89.5
+1,False,Btrain.csv,787,796,204,213,79.15
+2,False,Ctrain.csv,804,783,217,196,79.35
+3,False,Dtrain.csv,1000,0,1000,0,50.0
+4,False,Etrain.csv,993,500,500,7,74.65
+5,False,Ftrain.csv,1000,502,498,0,75.1
+0,True,Atrain.csv,978,497,503,22,73.75
+1,True,Btrain.csv,0,1000,0,1000,50.0
+2,True,Ctrain.csv,804,783,217,196,79.35
+3,True,Dtrain.csv,1000,0,1000,0,50.0
+4,True,Etrain.csv,892,499,501,108,69.55
+5,True,Ftrain.csv,1000,516,484,0,75.8
