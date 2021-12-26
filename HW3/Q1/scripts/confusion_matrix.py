@@ -107,7 +107,7 @@ def preform_operation():
         dataset_name = 'dataset %c' % dataset_prefix
         
         ## get the test dataframe to check the confusion matrix
-        _ , test_ds = read_csv_datasets([dataset_prefix], '../processed_dataset/')
+        _ , test_ds = read_csv_datasets([dataset_prefix], '../../processed_dataset/')
         
         
         ## the K value in KNN algorithm
