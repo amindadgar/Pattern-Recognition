@@ -138,7 +138,7 @@ def main():
     """
     ## read txt datasets 
     for char in ['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']:
-        train_raw_ds = read_dataset('../toy dataset/%ctrain' % char)
+        train_raw_ds = read_dataset('../../toy dataset/%ctrain' % char)
         train_class1 = np.matrix(train_raw_ds[:2])
         train_class2 = np.matrix(train_raw_ds[2:])
         
