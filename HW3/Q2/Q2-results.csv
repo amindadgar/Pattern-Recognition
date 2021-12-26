@@ -5,9 +5,9 @@
 3,False,Dtrain.csv,1000,0,1000,0,50.0
 4,False,Etrain.csv,993,500,500,7,74.65
 5,False,Ftrain.csv,1000,502,498,0,75.1
-0,True,Atrain.csv,978,497,503,22,73.75
-1,True,Btrain.csv,0,1000,0,1000,50.0
-2,True,Ctrain.csv,804,783,217,196,79.35
-3,True,Dtrain.csv,1000,0,1000,0,50.0
-4,True,Etrain.csv,892,499,501,108,69.55
-5,True,Ftrain.csv,1000,516,484,0,75.8
+6,True,Atrain.csv,978,497,503,22,73.75
+7,True,Btrain.csv,0,1000,0,1000,50.0
+8,True,Ctrain.csv,804,783,217,196,79.35
+9,True,Dtrain.csv,1000,0,1000,0,50.0
+10,True,Etrain.csv,892,499,501,108,69.55
+11,True,Ftrain.csv,1000,516,484,0,75.8
