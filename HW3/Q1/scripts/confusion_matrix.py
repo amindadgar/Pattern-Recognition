@@ -59,8 +59,11 @@ def create_confusion_matrix(actual_labels, target_labels):
     TN = ((a == False) & (t == False)).sum()
     FP = ((a == True) & (t == False)).sum()
     FN = ((a == False) & (t == True)).sum()
+
+    ## calculate the accuracy
+    acc = (actual_labels == target_labels).sum() * 100 / len(actual_labels)
  
-    confusion_matrix = pd.DataFrame(data={'TP':[TP], 'TN': [TN], 'FP': [FP], 'FN': [FN]})
+    confusion_matrix = pd.DataFrame(data={'TP':[TP], 'TN': [TN], 'FP': [FP], 'FN': [FN], 'accuracy':[acc]})
     
     return confusion_matrix
 
@@ -98,7 +101,7 @@ def preform_operation():
     ## get the dictionary of datas we saved before
     dict_data = read_json('../KNN-Result.json')
 
-    ds_confusion_matrix = pd.DataFrame(columns=[ 'dataset', 'K' ,'TP', 'TN', 'FP', 'FN'])
+    ds_confusion_matrix = pd.DataFrame(columns=[ 'dataset', 'K' ,'TP', 'TN', 'FP', 'FN', 'accuracy'])
 
     ## just use the Atrain, Atest results
     for dataset_prefix in prefixes:
@@ -125,7 +128,7 @@ def preform_operation():
             ## add the confusion matrix values into the dataframe
             ds_confusion_matrix = ds_confusion_matrix.append(ds, ignore_index=True)
     
-    ds_confusion_matrix.to_csv('../../processed_dataset/confusion_matrix.csv',mode='w')
+    ds_confusion_matrix.to_csv('../confusion_matrix.csv',mode='w')
 
 
 if __name__ == '__main__':
