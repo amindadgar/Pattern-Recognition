@@ -1,6 +1,46 @@
 import numpy as np
 import pandas as pd
 
+
+
+## compute the probability of x using the x value
+def guassian_multivariate(mu ,Sigma, x1, x2):
+    """
+    calculate the probability of multivariate guassian
+    we have a feature space of 2 by 1
+
+    INPUTS:
+    --------
+    mu:  is the mean value 
+    Sigma:  covariance matrix
+    x1:  feature one, a scalar value
+    x2:  feature two, a scalar value
+
+    OUTPUT:
+    -------
+    probability:  A scalar value representing the probability of X features 
+    """
+
+    coefficient = 1 / 2 * np.pi
+    ## inverse of covariance matrix
+    Sigma_inv = np.linalg.inv(Sigma)
+
+    ## the features array (transposing it to make it as 2 by 1 vector)
+    X = np.array([x1, x2]).T
+
+    ## exponential power value ( the superscript) 
+    e_superscript =  (-1/2) * np.dot((X - mu).T , Sigma_inv ).dot(X) 
+    
+    e = np.exp(e_superscript)
+
+    # covariance determanant
+    det_Sigma = np.linalg.det(Sigma)
+    probability = coefficient * np.sqrt(det_Sigma) * e
+
+    return probability
+
+
+
 def check_confusion_matrix(actual_label, target_label):
     """
     create the confusion matrix and accuracy and insert them into a pandas dataframe 
@@ -68,8 +108,8 @@ def bayes_classifier(datasets_name, mu_s, Sigma_s):
         for j in range(0, len(dataset)):
             
             ## get each feature for each row
-            x1 = ds_A['feature_one'].iloc[j]
-            x2 = ds_A['feature_two'].iloc[j]
+            x1 = dataset['feature_one'].iloc[j]
+            x2 = dataset['feature_two'].iloc[j]
 
             ## calculate the probability for calss 1
             p_class1 = guassian_multivariate(mu_s[i][0], Sigma_s[i][0], x1, x2)
@@ -135,6 +175,10 @@ def perform_classifying():
 
     result_ds = bayes_classifier(dataset_names, mu_s, Sigma_s)
 
-    result_ds.to_csv('Q2_p1_out.csv')
+    result_ds.to_csv('../Q2_p1_out.csv')
     
     print('Result saved in Q2_p1_out.csv')
+
+
+if __name__ == '__main__':
+    perform_classifying()

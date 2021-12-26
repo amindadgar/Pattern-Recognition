@@ -1,0 +1,7 @@
+,dataset,TP,TN,FP,FN,accuracy
+0,Atrain.csv,975,815,185,25,89.5
+1,Btrain.csv,787,796,204,213,79.15
+2,Ctrain.csv,804,783,217,196,79.35
+3,Dtrain.csv,1000,0,1000,0,50.0
+4,Etrain.csv,993,500,500,7,74.65
+5,Ftrain.csv,1000,502,498,0,75.1
