@@ -116,7 +116,7 @@ def check_label(actual_labels, target_labels):
     INPUTS:
     -----------
     actual_labels:  are the labels that the classifier gave us
-    target_labels:  are the correct labels of the data
+    target_labels:w  are the correct labels of the data
     
     OUTPUT:
     -----------
