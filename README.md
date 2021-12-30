@@ -36,6 +36,19 @@ This codes belong to my pattern recognition Homeworks.
    <br>
    At last mark the maximum likelihood value in the plot.
 ## HW3 description
+- **Question no1:** <br>
+   *(a)* Implement KNN algorithm for [toy dataset](https://github.com/amindadgar/pattern-recognition-homework/tree/main/HW3/toy%20dataset), and report the results of cpu and memory usage. Also create the confusion matrix of the results. <br>
+   *(b)* We want to find the suitable K for I dataset, So from each class seperate 100 data for validation and 900 for training. At last compare the results of each K.
+- **Question no2:** <br>
+   *(a)* Using the bayes classifier find the optimal class for each one of the data. The parameters of each class is given in [Q2](https://github.com/amindadgar/pattern-recognition-homework/blob/main/HW3/Q2/Q2_main.ipynb). <br>
+   *(b)* check if the covariance was isotropic, how the result would change. <br>
+   *(c)* compare the results with knn results in question 1.
+- **Question no3:** <br>
+   *(a)* Using the numbers dataset, classify classes with KNN algorithm. <br>
+   *(b)* Again Apply KNN algorithm and use 10 precent of each class for validation set and other for training.
+- **Question no4:** <br>
+   Apply the bayes classifier for each number image like question 2. The main difference here is the parameters aren't given, So compute them using a method such as Maximum Likelihood.
+
 
  # Notes:
  - i.i.d stands for independece and identical distribution
