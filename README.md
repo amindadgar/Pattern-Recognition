@@ -47,6 +47,8 @@ This codes belong to my pattern recognition Homeworks.
 - **Question no4:** <br>
    Apply the bayes classifier for each number image like question 2. The main difference here is the parameters aren't given, So compute them using a method such as Maximum Likelihood.
 
+## HW4
+In this homework use SVM and PCA models on MNIST dataset. More detailed problem is in the jupyter files.
 
  # Notes:
  - i.i.d stands for independece and identical distribution
