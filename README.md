@@ -16,7 +16,8 @@ This codes belong to my pattern recognition Homeworks.
    (a) Calculate the eignvalue and the eignvectors of The given covariance matrix. <br>
    (b) Generate 200 points using the distribution ```Normal(0,Cov_matrix)```. Plot the data into 2D graph, Also project the Covariance vectors on it.
 
-  <img src="https://latex.codecogs.com/svg.image?Covariance=\begin{bmatrix} 64 & -25\\ -25 & 64 \end{bmatrix}" />
+<!--   <img src="https://latex.codecogs.com/svg.image?\begin{equation}Covariance=\begin{bmatrix} 64 & -25\\ -25 & 64 \end{bmatrix}\end{equation}" /> -->
+<img src="https://latex.codecogs.com/png.image?\dpi{110}&space;\begin{equation}Covariance=\begin{bmatrix}&space;64&space;&&space;-25\\&space;-25&space;&&space;64&space;\end{bmatrix}\end{equation}" title="\begin{equation}Covariance=\begin{bmatrix} 64 & -25\\ -25 & 64 \end{bmatrix}\end{equation}" />
 
 - **Question no5:** <br>
    (a) Using the two i.i.d X1,X2 random variables with distribution of uniform(0,1) with feature sizes of 2, Given Y=X1+X2 Calculate <img src="https://latex.codecogs.com/svg.image?P(Y)"/> and <img src="https://latex.codecogs.com/svg.image?P(X1|Y)"/> and also plot the density functions of thoes. <br>
@@ -28,10 +29,7 @@ This codes belong to my pattern recognition Homeworks.
  - **decision boundary example:** Create a program that gets the covariance and mean of multiple distributions, Plot the contours of data and its decision boundary.
  - **Question no1:** 
    Plot the probability of x given θ using the formula below. <br>
-
-
-   <img src="https://latex.codecogs.com/png.image?p(x|\theta) = \begin{cases} \theta e^{{-\theta  x}},& \text{if } x\geq 0\\ 0, & \text{otherwise}\end{cases}" />
-   <br>
+  P(X|\theta) = if (x >= 0 ) then \theta e ^(-thetax) else 0 <br>
    Then Plot the <img src="https://latex.codecogs.com/png.image?p(x|\theta)" /> versus <img src="https://render.githubusercontent.com/render/math?math=\theta (0 \leq \theta \leq 5)"> for <img src="https://render.githubusercontent.com/render/math?math=x=2">. 
    <br>
    At last mark the maximum likelihood value in the plot.
